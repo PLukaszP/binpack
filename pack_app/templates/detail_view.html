@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Lista pakowania</title>
+</head>
+<body>
+    <h3>spakowano zamówienie:</h3>
+    <h4>id: {{ data.id }}  nazwa {{ data.plik }}</h4>
+    <a href="{% url 'list' %}"><button class="button button2" type="submit" >wstecz</button></a>
+<div class="container">
+{% for row in rackRows %}
+    <div class="row">
+        {% for el in row %}
+            <div class="szyba" id ="s{{el.getNr}}">  Ref: {{el.ref}} size: {{el.switchSize}}<br> {{el.grubosc}} {{el.budowa}} </div>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+</body>
+</html>

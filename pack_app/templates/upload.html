@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Upload file</title>
+</head>
+<body>
+<h2>Dodaj zlecenie aby optymalnie posortować szyby.</h2>
+<h4>Narazie można dodawać takie pliki</h4>
+<p  style="color:red">przykładowy plik</p>
+<img src="./static/file_example.jpg" alt="przykład" width="1200" >
+<div>
+<form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+    <p>{{form.file}}</p>
+    <p><input type="submit" value="dodaj plik"/></p>
+</form>
+</div>
+
+<a href="{% url 'list' %}"><button class="button button2" type="submit" >przejdź do listy plików</button></a>
+
+<table class="paleBlueRows">
+<thead>
+  <tr>
+    <th>id</th>
+    <th>nazwa pliku</th>
+  </tr>
+</thead>
+<tbody>
+{% for data in dataset %}
+  <tr>
+    <td>{{ data.id }} </td>
+    <td>{{ data.plik }}</td>
+  </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+
+</body>
+</html>

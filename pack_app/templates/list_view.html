@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Lista plików</title>
+</head>
+<body>
+<h2>Lista plików</h2>
+<a href="{% url 'upload' %}"><button class="button button2" type="submit" >wstecz</button></a>
+<div>
+
+    {% for data in dataset %}
+    <div class="row">
+        <div>id: {{ data.id }}  nazwa {{ data.plik }}</div>
+        <a href="{% url 'upload' %}{{ data.id }}"><button class="button button2" type="submit" >spakuj zlecenie</button></a>
+        <a href="{% url 'upload' %}{{ data.id }}/del"><button class="button button1" type="submit" >usuń plik</button></a>
+    </div>
+    {% endfor %}
+
+</div>
+</body>
+</html>
