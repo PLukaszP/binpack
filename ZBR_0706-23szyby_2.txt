@@ -1,0 +1,23 @@
+Data 02.06.2023    Godzina 11:47               ZBR/0706-23szyby_2
+
+Symbol                                    Iloœæ   Szer     Wys     Pow.  Grub.  Poz Zlecenie             Opis						    Kolor ramki
+4/18/4/18/4 (XN)(SWS)                        1     553     946   0.523    48     1 23/1965              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1     553     946   0.523    48     1 23/1965              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1     563     956   0.538    48     2 23/1965              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1     563     956   0.538    48     2 23/1965              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1     692    1091   0.755    48     1 23/1967              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1     692    1091   0.755    48     1 23/1967              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1     892    1091   0.973    48     2 23/1967              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1     892    1091   0.973    48     2 23/1967              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1     951    1091   1.038    48     3 23/1967              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/Chinchilla Bia³y 4/18/4(SWS)            1     751     831   0.624    48     4 23/1967              Climatop XN Designe Chinchilla Bia³y             czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1     751     841   0.632    48     5 23/1967              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1     792    1091   0.864    48     6 23/1967              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1     792    1091   0.864    48     6 23/1967              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1     617    1091   0.673    48     7 23/1967              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1     617    1091   0.673    48     7 23/1967              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1     643    1091   0.702    48     7 23/1967              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1    1197    1811   2.168    48     8 23/1967              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/18/4/18/4 (XN)(SWS)                        1    1349    1962   2.647    48     8 23/1967              Climatop XN - 48mm Ug=0,5/g=54%/Lt=74%           czarny (RAL 9005)
+4/12/4/12/4 (XN)(SWS)                        1     718    2008   1.442    36     1 23/1968              Climatop XN - 36mm                               czarny (RAL 9005)
+                    - Skwierzyna DOST 153 06 23 PIATEK
