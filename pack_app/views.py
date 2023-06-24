@@ -3,10 +3,9 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from .forms import UploadFileForm
 from .models import Batch
-from .paker import textFileParser
-from .paker import rackPack
+from .paker import text_file_parser
+from .paker import pack_into_racks
 import pandas as pd
-
 
 def upload_file(request):
     context = {}
@@ -32,14 +31,14 @@ def detail_view(request, id):
     context = {}
     context["data"] = Batch.objects.get(id=id)
     batch =context["data"]
-    dfcols = ['Referencja', 'Szerokosc', 'Wysokosc', 'grubosc', 'bodowa', 'getNr', 'szer', 'wys', 'object']
+    dfcols = ['Referencja', 'Szerokosc', 'Wysokosc', 'grubosc', 'bodowa', 'getNr', 'szer', 'wys', 'class_Glass_object']
     df = pd.DataFrame(columns=dfcols)
     with batch.plik.open('r') as f:
         lines = f.readlines()
-        df = textFileParser(lines, df, dfcols)
+        df = text_file_parser(lines, df, dfcols)
     df_sorted = df.sort_values(by=['wys', 'szer'], ascending=[False, False])
-    FreeRowSpace = 4
-    context["rackRows"] = rackPack(FreeRowSpace, df_sorted)
+    row_space = 4
+    context["rackRows"] = pack_into_racks(row_space, df_sorted)
     return render(request, "detail_view.html", context)
 
 def delete_view(request, id):

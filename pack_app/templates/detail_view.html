@@ -14,7 +14,7 @@
 {% for row in rackRows %}
     <div class="row">
         {% for el in row %}
-            <div class="szyba" id ="s{{el.getNr}}">  Ref: {{el.ref}} size: {{el.switchSize}}<br> {{el.grubosc}} {{el.budowa}} </div>
+            <div class="szyba" id ="s{{el.get_number}}">  Ref: {{el.ref}} size: {{el.switch_size}}<br> {{el.grubosc}} {{el.budowa}} </div>
         {% endfor %}
     </div>
 </div>

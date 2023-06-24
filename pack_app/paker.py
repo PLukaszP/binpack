@@ -1,90 +1,87 @@
 import pandas as pd
 
-class Szyba:
-    def __init__(self, szerokosc, wysokosc, grubosc, budowa, ref, linia):
-        self.szer = szerokosc
-        self.wys = wysokosc
-        self.grubosc = grubosc
-        self.budowa = budowa
+class Glass:
+    def __init__(self, width, height, thickness, construction, ref, row):
+        self.szer = width
+        self.wys = height
+        self.grubosc = thickness
+        self.budowa = construction
         self.ref = ref
-        self.linia = linia
-    def switchSize(self):
-        wiekszy = max(self.szer, self.wys)
-        mniejszy = min(self.szer, self.wys)
-        if mniejszy > 1700:
+        self.row = row
+
+    def switch_size(self):
+        longer_side = max(self.szer, self.wys)
+        shorter_side = min(self.szer, self.wys)
+        if shorter_side > 1700:
             print('za duża szyba')
-        elif wiekszy > 1700:
-            self.szer = wiekszy
-            self.wys = mniejszy
+        elif longer_side > 1700:
+            self.szer = longer_side
+            self.wys = shorter_side
         else:
-            self.szer = mniejszy
-            self.wys = wiekszy
+            self.szer = shorter_side
+            self.wys = longer_side
         return (self.szer, self.wys)
 
-
-    def getNr(self):
-        mniejszy = min(self.szer, self.wys)
-        wiekszy = max(self.szer, self.wys)
-        if wiekszy > 1700:
+    def get_number(self):
+        shorter_side = min(self.szer, self.wys)
+        longer_side = max(self.szer, self.wys)
+        if longer_side > 1700:
             nr = 4
-        elif mniejszy > 1101:
+        elif shorter_side > 1101:
             nr = 4
-        elif mniejszy > 851:
+        elif shorter_side > 851:
             nr = 3
-        elif mniejszy > 561:
+        elif shorter_side > 561:
             nr = 2
-        elif mniejszy >= 350:
+        elif shorter_side >= 350:
             nr = 1
-    #bardzo małe szyby dodatkowe wymiarowanie
-        elif mniejszy < 350 and wiekszy >= 570:
+        #very small glasses extra dimensioning
+        elif shorter_side < 350 and longer_side >= 570:
             nr = 2
         else:
             nr = 1
         return nr
-    def __repr__(self):
-        return f"Ref {self.ref}: {self.szer}x{self.wys} {self.grubosc}  {self.budowa}  rozmiar {self.switchSize()}"
-    def __str__(self):
-        return self.__repr__()
 
-def rackPack(FreeRowSpace, df):
-    lista = df['getNr']
-    remain = [FreeRowSpace]
-    solution = [[]]
-    for i, nr in enumerate(lista):
-        x = df.iloc[i]['object']
-        for j,free in enumerate(remain):
-            if free >= nr:
-                remain[j] -= nr
-                solution[j].append(x)
+    def __repr__(self):
+        return f"Ref {self.ref}: {self.szer}x{self.wys} {self.grubosc}  {self.budowa}  size {self.switch_size()}"
+
+    __str__ = __repr__
+
+def pack_into_racks(row_space, df):
+    list = df['getNr']
+    remain_row_space = [row_space]
+    pack_solution = [[]]
+    for list_index, nr in enumerate(list):
+        x = df.iloc[list_index]['class_Glass_object']
+        for j, free_row_space in enumerate(remain_row_space):
+            if free_row_space >= nr:
+                remain_row_space[j] -= nr
+                pack_solution[j].append(x)
                 break
         else:
-            solution.append([x])
-            remain.append(FreeRowSpace-nr)
-    return solution
+            pack_solution.append([x])
+            remain_row_space.append(row_space-nr)
+    return pack_solution
 
-def textFileParser(lines, df, dfcols):
+def text_file_parser(lines, df, dfcols):
     for row in lines[3:-1]:
-        budowa = row[0:40].strip()
-        ilosc = int(row[43:49])
-        szerokosc = int(row[48:57])
-        wysokosc = int(row[58:64])
-        grubosc = int(row[74:79])
+        construction = row[0:40].strip()
+        pieces = int(row[43:49])
+        width = int(row[48:57])
+        height = int(row[58:64])
+        thickness = int(row[74:79])
         ref = row[83:97].strip()
-        for szt in range(ilosc):
-            szyba = Szyba(szerokosc, wysokosc, grubosc, budowa, ref, row)
-            slotsNr = szyba.getNr()
-            size = szyba.switchSize()
+        for szt in range(pieces):
+            glass = Glass(width, height, thickness, construction, ref, row)
+            slots_numbers = glass.get_number()
+            size = glass.switch_size()
             szer = int(size[0])
             wys = int(size[1])
-            df = df._append(pd.Series([szyba.ref, szyba.szer, szyba.wys, szyba.grubosc, szyba.budowa, slotsNr, szer, wys, szyba],
-                                  index=dfcols), ignore_index=True)
+            df = df._append(
+                pd.Series([glass.ref, glass.szer, glass.wys, glass.grubosc,
+                           glass.budowa, slots_numbers, szer, wys, glass],
+                          index=dfcols),
+                ignore_index=True
+            )
     return df
 
-
-#dfcols = ['Referencja', 'Szerokosc', 'Wysokosc', 'grubosc', 'bodowa', 'getNr', 'szer', 'wys', 'object']
-#df = pd.DataFrame(columns=dfcols)
-#lines = open('ZBR_0706-23szyby_2.txt', 'r').readlines()
-#df = textFileParser(lines, df, dfcols)
-#df_sorted = df.sort_values(by=['getNr', 'wys', 'szer'], ascending=[False, False, False])
-#FreeRowSpace= 4
-#RowsPackDf = rackPack(FreeRowSpace, df_sorted)
